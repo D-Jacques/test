@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 03 Juillet 2017 à 16:47
+-- Généré le :  Mar 04 Juillet 2017 à 16:51
 -- Version du serveur :  10.1.21-MariaDB
 -- Version de PHP :  7.1.1
 
@@ -43,19 +43,13 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `title`, `article_content`, `article_resume`, `article_date`, `author`, `article_type`, `system`, `article_picture`) VALUES
-(12, 'azazeazz', 'Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam inductus est ut appellant Christiani diaconus, cuius prolatae litterae scriptae Graeco sermone ad Tyrii textrini praepositum celerari speciem perurgebant quam autem non indicabant denique etiam idem ad usque discrimen vitae vexatus nihil fateri conpulsus est.\r\n\r\nNisi mihi Phaedrum, inquam, tu mentitum aut Zenonem putas, quorum utrumque audivi, cum mihi nihil sane praeter sedulitatem probarent, omnes mihi Epicuri sententiae satis notae sunt. atque eos, quos nominavi, cum Attico nostro frequenter audivi, cum miraretur ille quidem utrumque, Phaedrum autem etiam amaret, cotidieque inter nos ea, quae audiebamus, conferebamus, neque erat umquam controversia, quid ego intellegerem, sed quid probarem.\r\n\r\nQuibus ita sceleste patratis Paulus cruore perfusus reversusque ad principis castra multos coopertos paene catenis adduxit in squalorem deiectos atque maestitiam, quorum adventu intendebantur eculei uncosque parabat carnifex et tormenta. et ex is proscripti sunt plures actique in exilium alii, non nullos gladii consumpsere poenales. nec enim quisquam facile meminit sub Constantio, ubi susurro tenus haec movebantur, quemquam absolutum.', 'Post haec indumentum regale quaerebatur et ministr...', '2017-07-03 15:55:54', 'admin', 'News', 'PS4', 'assets/upload/v6kuq2wfy6ebbe5.jpg'),
-(13, 'cxkcdklsd', 'Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam inductus est ut appellant Christiani diaconus, cuius prolatae litterae scriptae Graeco sermone ad Tyrii textrini praepositum celerari speciem perurgebant quam autem non indicabant denique etiam idem ad usque discrimen vitae vexatus nihil fateri conpulsus est.\r\n\r\nNisi mihi Phaedrum, inquam, tu mentitum aut Zenonem putas, quorum utrumque audivi, cum mihi nihil sane praeter sedulitatem probarent, omnes mihi Epicuri sententiae satis notae sunt. atque eos, quos nominavi, cum Attico nostro frequenter audivi, cum miraretur ille quidem utrumque, Phaedrum autem etiam amaret, cotidieque inter nos ea, quae audiebamus, conferebamus, neque erat umquam controversia, quid ego intellegerem, sed quid probarem.\r\n\r\nQuibus ita sceleste patratis Paulus cruore perfusus reversusque ad principis castra multos coopertos paene catenis adduxit in squalorem deiectos atque maestitiam, quorum adventu intendebantur eculei uncosque parabat carnifex et tormenta. et ex is proscripti sunt plures actique in exilium alii, non nullos gladii consumpsere poenales. nec enim quisquam facile meminit sub Constantio, ubi susurro tenus haec movebantur, quemquam absolutum.', 'Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis confessisque pectoralem tuniculam sine manicis textam, Maras nomine quid...', '2017-07-03 15:56:25', 'admin', 'News', 'PS4', 'assets/upload/i22q8d29ihy86st.jpg');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `article_article_type`
---
-
-CREATE TABLE `article_article_type` (
-  `id_article` int(11) NOT NULL,
-  `id_article_type` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(12, 'azazeazz', 'Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam inductus est ut appellant Christiani diaconus, cuius prolatae litterae scriptae Graeco sermone ad Tyrii textrini praepositum celerari speciem perurgebant quam autem non indicabant denique etiam idem ad usque discrimen vitae vexatus nihil fateri conpulsus est.\r\n\r\nNisi mihi Phaedrum, inquam, tu mentitum aut Zenonem putas, quorum utrumque audivi, cum mihi nihil sane praeter sedulitatem probarent, omnes mihi Epicuri sententiae satis notae sunt. atque eos, quos nominavi, cum Attico nostro frequenter audivi, cum miraretur ille quidem utrumque, Phaedrum autem etiam amaret, cotidieque inter nos ea, quae audiebamus, conferebamus, neque erat umquam controversia, quid ego intellegerem, sed quid probarem.\r\n\r\nQuibus ita sceleste patratis Paulus cruore perfusus reversusque ad principis castra multos coopertos paene catenis adduxit in squalorem deiectos atque maestitiam, quorum adventu intendebantur eculei uncosque parabat carnifex et tormenta. et ex is proscripti sunt plures actique in exilium alii, non nullos gladii consumpsere poenales. nec enim quisquam facile meminit sub Constantio, ubi susurro tenus haec movebantur, quemquam absolutum.', 'Post haec indumentum regale quaerebatur et ministr...', '2017-07-03 15:55:54', 'admin', 'News', 'PS4', 'upload/v6kuq2wfy6ebbe5.jpg'),
+(13, 'cxkcdklsd', 'Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam inductus est ut appellant Christiani diaconus, cuius prolatae litterae scriptae Graeco sermone ad Tyrii textrini praepositum celerari speciem perurgebant quam autem non indicabant denique etiam idem ad usque discrimen vitae vexatus nihil fateri conpulsus est.\r\n\r\nNisi mihi Phaedrum, inquam, tu mentitum aut Zenonem putas, quorum utrumque audivi, cum mihi nihil sane praeter sedulitatem probarent, omnes mihi Epicuri sententiae satis notae sunt. atque eos, quos nominavi, cum Attico nostro frequenter audivi, cum miraretur ille quidem utrumque, Phaedrum autem etiam amaret, cotidieque inter nos ea, quae audiebamus, conferebamus, neque erat umquam controversia, quid ego intellegerem, sed quid probarem.\r\n\r\nQuibus ita sceleste patratis Paulus cruore perfusus reversusque ad principis castra multos coopertos paene catenis adduxit in squalorem deiectos atque maestitiam, quorum adventu intendebantur eculei uncosque parabat carnifex et tormenta. et ex is proscripti sunt plures actique in exilium alii, non nullos gladii consumpsere poenales. nec enim quisquam facile meminit sub Constantio, ubi susurro tenus haec movebantur, quemquam absolutum.', 'Post haec indumentum regale quaerebatur et ministris fucandae purpurae tortis confessisque pectoralem tuniculam sine manicis textam, Maras nomine quid...', '2017-07-03 15:56:25', 'admin', 'News', 'PS4', 'upload/i22q8d29ihy86st.jpg'),
+(14, 'hjhygj', 'ghjgfhgf', 'ghjgfhgf...', '2017-07-04 12:01:08', '', 'News', '2', 'upload/igptn10qiu1kgnu.jpg'),
+(15, 'hjhygj', 'hgfhgfhg', 'hgfhgfhg...', '2017-07-04 12:02:58', '', 'News', '2', 'upload/61bb67fqfsoufx3.jpg'),
+(16, 'azrazraz', 'C\'EST UNE SORTIE OLALALALALALALALALALALALALALOPDZJOPfuop', 'C\'EST UNE SORTIE OLALALALALALALALALALALALALALOPDZJOPfuop...', '2017-07-04 12:56:04', 'admin', '2', '1', 'upload/1sjddf59o4243sf.jpg'),
+(17, 'zaezasdsq', 'z\"raaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'z\"raaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa...', '2017-07-04 13:00:46', 'admin', '1', '1', 'upload/p8tb9d2l31cv228.jpg'),
+(18, 'sggs', '45465464546', '45465464546...', '2017-07-04 14:01:01', 'admin', '1', '2', 'upload/tvvcv10tnp21opq.jpg');
 
 -- --------------------------------------------------------
 
@@ -65,8 +59,19 @@ CREATE TABLE `article_article_type` (
 
 CREATE TABLE `article_system` (
   `id_article` int(11) NOT NULL,
-  `id_console` int(11) NOT NULL
+  `id_system` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Contenu de la table `article_system`
+--
+
+INSERT INTO `article_system` (`id_article`, `id_system`) VALUES
+(14, 2),
+(15, 2),
+(16, 1),
+(17, 1),
+(18, 2);
 
 -- --------------------------------------------------------
 
@@ -75,9 +80,16 @@ CREATE TABLE `article_system` (
 --
 
 CREATE TABLE `article_type` (
-  `id` int(11) NOT NULL,
-  `article_name` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_article` int(11) NOT NULL,
+  `id_types` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Contenu de la table `article_type`
+--
+
+INSERT INTO `article_type` (`id_article`, `id_types`) VALUES
+(18, 1);
 
 -- --------------------------------------------------------
 
@@ -89,6 +101,33 @@ CREATE TABLE `system` (
   `id` int(11) NOT NULL,
   `system_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `system`
+--
+
+INSERT INTO `system` (`id`, `system_name`) VALUES
+(1, 'ps4'),
+(2, 'xbox');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `types`
+--
+
+CREATE TABLE `types` (
+  `id` int(11) NOT NULL,
+  `article_type` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Contenu de la table `types`
+--
+
+INSERT INTO `types` (`id`, `article_type`) VALUES
+(1, 'News'),
+(2, 'sortie');
 
 -- --------------------------------------------------------
 
@@ -129,15 +168,15 @@ ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `article_type`
---
-ALTER TABLE `article_type`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Index pour la table `system`
 --
 ALTER TABLE `system`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `types`
+--
+ALTER TABLE `types`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -154,17 +193,17 @@ ALTER TABLE `user_profile`
 -- AUTO_INCREMENT pour la table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT pour la table `article_type`
---
-ALTER TABLE `article_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT pour la table `system`
 --
 ALTER TABLE `system`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `types`
+--
+ALTER TABLE `types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `user_profile`
 --

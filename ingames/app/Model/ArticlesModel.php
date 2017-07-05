@@ -63,8 +63,8 @@ class ArticlesModel extends \W\Model\Model{
 
                 }
             }
-            $fileUrl = 'assets/upload/'.$newName;
-            if(!$test = move_uploaded_file($dataFile['article_picture']['tmp_name'], 'assets/upload/'.$newName)){ //on déplace notre fichier
+            $fileUrl = 'upload/'.$newName;
+            if(!$test = move_uploaded_file($dataFile['article_picture']['tmp_name'], 'upload/'.$newName)){ //on déplace notre fichier
               $_SESSION['error'] = 'error';
             }
             return $fileUrl;
@@ -80,11 +80,11 @@ class ArticlesModel extends \W\Model\Model{
             $_SESSION['error'] = 'Veuillez saisir un titre d\'au moins 4 caractères';
             return false;
         }
-        if($dataArticle['article_type']!= 'News' && $dataArticle['article_type']!= 'Sorties' && $dataArticle['article_type']!= 'Event' && $dataArticle['article_type']!= 'Mise à jour' && $dataArticle['article_type']!= 'Dossier'){
+        if($dataArticle['system'] == 'null'){
             $_SESSION['error'] = 'Erreur type d\'article incorrect';
             return false;
         }
-        if($dataArticle['system']!= 'PS4'){
+        if($dataArticle['system'] == 'null'){
             $_SESSION['error'] = 'Erreur type de console incorrect';
             return false;
         }
@@ -99,6 +99,25 @@ class ArticlesModel extends \W\Model\Model{
         $dataArticle['article_resume'] = substr($dataArticle['article_content'],0, $lenght = 150) . '...';
         $dataArticle['article_picture'] = $urlImage;
         $dataArticle['author'] = $_SESSION['user']['user_name'];
-        return $this->insert($dataArticle);
+        $newArticle = $this->insert($dataArticle);
+        
+        $sql = 'INSERT INTO article_system (`id_article`, `id_system`) VALUES ('.$newArticle['id'] .','.$dataArticle['system'].')';
+
+        $sth = $this->dbh->prepare($sql);
+        //$sth->bindValue(':id', $id);
+        if($sth->execute()){
+            $sql = 'INSERT INTO article_type (`id_article`, `id_types`) VALUES ('.$newArticle['id'] .','.$dataArticle['article_type'].')';
+
+            $sth = $this->dbh->prepare($sql);
+            //$sth->bindValue(':id', $id);
+            if($sth->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+
+        
      }
 }

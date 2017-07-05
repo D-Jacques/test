@@ -14,7 +14,7 @@
 			<?php if(!isset($_SESSION['user'])){ ?>
 				<form method="POST" action="<?= $this->url('admin_connection') ?>">
 					<input type="text" name="usernameOrEmail" placeholder="Nom d'utilisateur ou email"><br>
-					<input type="text" name="userPassword" placeholder="mot de passe">
+					<input type="password" name="userPassword" placeholder="mot de passe">
 
 					<button type="submit">Login</button>
 				</form>

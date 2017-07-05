@@ -1,7 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Outil création d\'articles']) ?>
 
 <?php $this->start('main_content') ?>
-	<h2>Inscripion.</h2>
+	<h2>Création d'articles.</h2>
 	<form method="POST" action="<?= $this->url('article_create') ?>" enctype="multipart/form-data">
 		
 		<label for="title">Titre</label>
@@ -10,13 +10,19 @@
 
 		<label for="article_type">Type de contenu</label>
 		<select name="article_type" id="article_type">
-			<option value="News">News</option>
+			<option value="null" disabled selected>Selectionner un type</option>
+			<?php foreach ($types as $key => $type) { ?>
+			<option value="<?= $type['id'] ?>"><?= $type['article_type'] ?></option> <?php
+			} ?>
 		</select>
 		<br>
 
 		<label for="system">Console</label>
 		<select name="system" id="system">
-			<option value="PS4">PS4</option>
+			<option value="null" disabled selected>Selectionner une console</option>
+			<?php foreach ($systems as $key => $system) { ?>
+			<option value="<?= $system['id'] ?>"><?= $system['system_name'] ?></option> <?php
+			} ?>
 		</select>
 		<br>
 

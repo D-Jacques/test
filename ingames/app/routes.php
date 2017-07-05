@@ -9,5 +9,7 @@
 		['GET', '/deconnection', 'Admin#disconnect', 'admin_deconnection'],
 
 		//partie articles
-		['GET|POST', '/article/creation', 'Article#create', 'article_create']
+		['GET|POST', '/article/creation', 'Article#create', 'article_create'],
+		['GET|POST', '/article/list', 'Article#list', 'article_list'],
+		['GET', '/article/delete', 'Article#delete', 'article_delete'],
 	);
