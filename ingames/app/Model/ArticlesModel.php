@@ -51,7 +51,7 @@ class ArticlesModel extends \W\Model\Model{
                     $newFileName = $this->createFileName(15);
                     if($fileTypeMime == "image/png"){ //vérification du type mime du fichier si c'est un png 
                         $newFileExt = ".png"; //on créer une variable extention qui prendra le .png
-                    } else if($fileTypeMime == "image/jpeg"){
+                    } else if($fileTypeMime == "image/jpeg" || $fileTypeMime == "image/jpg"){
                         $newFileExt = ".jpg";// pareil pour le jpeg
                     }
                     $newName = $newFileName.$newFileExt; //on concatène le nouveau nom généré aléatoirement et l'extension
@@ -64,7 +64,7 @@ class ArticlesModel extends \W\Model\Model{
                 }
             }
             $fileUrl = 'upload/'.$newName;
-            if(!$test = move_uploaded_file($dataFile['article_picture']['tmp_name'], 'upload/'.$newName)){ //on déplace notre fichier
+            if(!$test = move_uploaded_file($dataFile['article_picture']['tmp_name'], 'assets/upload/'.$newName)){ //on déplace notre fichier si il y'a eu un echec on retourne une erreur
               $_SESSION['error'] = 'error';
             }
             return $fileUrl;
@@ -72,6 +72,7 @@ class ArticlesModel extends \W\Model\Model{
 
      public function createArticle($dataArticle, $dataFile){
          
+         //Lors de l'étape de création on vérifie si les champs ne sont pas vide et qu'ils soient bien conforme
         if(empty($dataArticle)){
             $_SESSION['error'] = 'Veuillez remplir tous les champs';
             return false;
@@ -96,16 +97,22 @@ class ArticlesModel extends \W\Model\Model{
         if(!$urlImage){
             return false;
         }
+        //on coupe l'article pour faire un court extrait
         $dataArticle['article_resume'] = substr($dataArticle['article_content'],0, $lenght = 150) . '...';
+        //On récupère le chemin ou est stocké l'image
         $dataArticle['article_picture'] = $urlImage;
+        //On récupére, pour le nom de l'auteur, le nom de l'utilisateur qui est connecté (en Sachant que c'est un administrateur) 
         $dataArticle['author'] = $_SESSION['user']['user_name'];
+        //Ensuite on insert les infos dans la base de donnée
         $newArticle = $this->insert($dataArticle);
         
+        //on insère dans la table de pivot la liaison entre l'article et la console
         $sql = 'INSERT INTO article_system (`id_article`, `id_system`) VALUES ('.$newArticle['id'] .','.$dataArticle['system'].')';
 
         $sth = $this->dbh->prepare($sql);
         //$sth->bindValue(':id', $id);
         if($sth->execute()){
+            //on insère dans la table de pivot la liaison entre l'article et le type d'article
             $sql = 'INSERT INTO article_type (`id_article`, `id_types`) VALUES ('.$newArticle['id'] .','.$dataArticle['article_type'].')';
 
             $sth = $this->dbh->prepare($sql);
@@ -119,5 +126,70 @@ class ArticlesModel extends \W\Model\Model{
         return false;
 
         
+     }
+
+     public function updateArticle($updateDataArticle, $idArticle, $dataFile){
+        if(empty($updateDataArticle)){
+            $_SESSION['error'] = 'Veuillez remplir tous les champs';
+            return false;
+        }
+        if(strlen($updateDataArticle['title']) < 4 ){
+            $_SESSION['error'] = 'Veuillez saisir un titre d\'au moins 4 caractères';
+            return false;
+        }
+        // if($updateDataArticle['system'] == 'null'){
+        //     $_SESSION['error'] = 'Erreur type d\'article incorrect';
+        //     return false;
+        // }
+        // if($updateDataArticle['system'] == 'null'){
+        //     $_SESSION['error'] = 'Erreur type de console incorrect';
+        //     return false;
+        // }
+        if(empty($updateDataArticle['article_content'])){
+            $_SESSION['error'] = 'Ce champ ne peut pas etre vide!';
+            return false;
+        }
+        $urlImage = $this->uploadFile($dataFile);
+        if(!$urlImage){
+            $_SESSION['error'] = 'erreur sur l\'image';
+            return false;
+        }
+
+        $updateDataArticle['article_resume'] = substr($updateDataArticle['article_content'],0, $lenght = 150) . '...';
+        $updateDataArticle['article_picture'] = $urlImage;
+
+        $updateArticle = $this->update($updateDataArticle, $idArticle);
+        $sql = 'DELETE FROM article_system WHERE id_article='.$idArticle;
+        $sth = $this->dbh->prepare($sql);
+        if(!$sth->execute()){
+            $_SESSION['error'] = 'Erreur lors de la suppression d\'un élément';
+            return false;
+        }
+        $sql = 'DELETE FROM article_type WHERE id_article='.$idArticle;
+        $sth = $this->dbh->prepare($sql);
+        if(!$sth->execute()){
+            $_SESSION['error'] = 'Erreur lors de la suppression d\'un élément';
+            return false;
+        }
+
+        //$sql = 'UPDATE article_system  SET id_article =  ('.$newArticle['id'] .','.$dataArticle['system'].')';
+        $sql = 'INSERT INTO article_system (`id_article`, `id_system`) VALUES ('.$updateArticle['id'] .','.$updateDataArticle['system'].')';
+
+        $sth = $this->dbh->prepare($sql);
+        //$sth->bindValue(':id', $id);
+        if($sth->execute()){
+            //on insère dans la table de pivot la liaison entre l'article et le type d'article
+            $sql = 'INSERT INTO article_type (`id_article`, `id_types`) VALUES ('.$updateArticle['id'] .','.$updateDataArticle['article_type'].')';
+
+            $sth = $this->dbh->prepare($sql);
+            //$sth->bindValue(':id', $id);
+            if($sth->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+
      }
 }

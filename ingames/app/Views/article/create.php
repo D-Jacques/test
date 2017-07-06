@@ -5,7 +5,7 @@
 	<form method="POST" action="<?= $this->url('article_create') ?>" enctype="multipart/form-data">
 		
 		<label for="title">Titre</label>
-		<input type="text" name="title" placeholder="Nom d'utilisateur" id="title">
+		<input type="text" name="title" placeholder="titre du contenu" id="title">
 		<br>
 
 		<label for="article_type">Type de contenu</label>
@@ -27,7 +27,7 @@
 		<br>
 
 		<label for="article_content">Zone de contenu</label>
-		<textarea name="article_content"></textarea>
+		<textarea name="article_content" rows="25" cols="150"></textarea>
 		<br>
 
 		<label for="article_picture">Illustration de contenu</label>

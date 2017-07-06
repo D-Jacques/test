@@ -68,5 +68,6 @@
 		unset($_SESSION['success']);
 		?>
 	</script>
+	<?= $this->section('script') ?>
 </body>
 </html>
