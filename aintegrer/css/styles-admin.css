@@ -1,0 +1,52 @@
+header{
+    background-color: #3279AC;
+    margin-top: -20px;
+    height: 120px;
+}
+header div#return a{
+    color: white;
+}
+header div#return h1{
+    text-align: center;
+}
+header div#gestion{
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+header div#gestion a{
+    display: inline;
+    padding-left: 50px;
+    margin-left: 200px;
+    text-align: center;
+    color: black;
+    padding-top: 10px;   
+}
+body{
+    margin-top: 20px;
+}
+body h2{
+    text-align: center;
+}
+body p{
+    margin-top: 50px;
+}
+body div#adming h2{
+    text-align: center;
+}
+body div#adming p{
+    text-align: center;
+    margin-bottom: 20px;
+}
+body div#adming form{
+    text-align: center;
+    padding-right: 10px;
+}
+body div#adming .b{
+    margin-left: 30px;
+    margin-right: 10px;
+}
+body div#adming button{
+    display: block;
+    margin-left: 48%;
+    margin-top: 25px;
+}

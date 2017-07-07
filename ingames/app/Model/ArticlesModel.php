@@ -192,4 +192,20 @@ class ArticlesModel extends \W\Model\Model{
         return false;
 
      }
+
+     public function searchByType($type){
+        $sql = 'SELECT * FROM article_type JOIN types ON types.id=article_type.id_types JOIN articles ON articles.id = article_type.id_article WHERE types.article_type LIKE :search';
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindValue(':search', $type);
+        // foreach($search as $key => $value){
+        //     $value = ($stripTags) ? strip_tags($value) : $value;
+        //     $sth->bindValue(':'.$key, '%'.$value.'%');
+        // }
+        if(!$sth->execute()){
+            return false;
+        }
+
+        return $sth->fetchAll();
+     }
 }

@@ -1,0 +1,22 @@
+header{
+    background-color: #3279AC;
+    height: 120px;
+}
+header div#return a{
+    color: white;
+}
+header div#return h1{
+    text-align: center;
+}
+header div#gestion{
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+header div#gestion a{
+    display: inline;
+    padding-left: 50px;
+    margin-left: 200px;
+    text-align: center;
+    color: black;
+    padding-top: 10px;   
+}
