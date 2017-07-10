@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Outil création d\'articles']) ?>
+<?php $this->layout('layout_admin', ['title' => 'Outil création d\'articles']) ?>
 
 <?php $this->start('main_content') ?>
 	<h2>Création d'articles.</h2>

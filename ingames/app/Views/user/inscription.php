@@ -20,6 +20,8 @@
 		<input type="text" name="user_mail" id="user_mail" placeholder="Adresse mail">
 		<br>
 
+		<div class="g-recaptcha" data-sitekey="6LfkRigUAAAAAJIBZD7Qx9GDhw7TKJxFiOTp9xKS"></div>
+		
 		<button type="submit"> Je m'inscrit</button>
 	</form>
 

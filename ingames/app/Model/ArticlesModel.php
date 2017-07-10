@@ -193,9 +193,14 @@ class ArticlesModel extends \W\Model\Model{
 
      }
 
-     public function searchByType($type){
+     public function searchByType($type, $limit = null, $offset = null){
         $sql = 'SELECT * FROM article_type JOIN types ON types.id=article_type.id_types JOIN articles ON articles.id = article_type.id_article WHERE types.article_type LIKE :search';
-
+        if($limit){
+            $sql .= ' LIMIT '.$limit;
+            if($offset){
+                $sql .= ' OFFSET '.$offset;
+            }
+        }
         $sth = $this->dbh->prepare($sql);
         $sth->bindValue(':search', $type);
         // foreach($search as $key => $value){
@@ -207,5 +212,18 @@ class ArticlesModel extends \W\Model\Model{
         }
 
         return $sth->fetchAll();
+     }
+
+     public function articleCount($type = NULL){
+        $sql = 'SELECT COUNT(id) as nbId FROM articles';
+        if(!is_null($type)){
+            $sql .= ' WHERE article_type = '.$type;
+        }
+        $sth= $this->dbh->prepare($sql);
+        if($sth->execute()){
+           $totalArticle = $sth->fetch();
+           return intval($totalArticle['nbId']); 
+        }
+        return 0;
      }
 }

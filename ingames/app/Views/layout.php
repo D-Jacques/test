@@ -11,8 +11,11 @@
     <!-- Feuilles de styles -->
     <link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css');?>">
     <link rel="stylesheet" href="<?= $this->assetUrl('css/styles.css') ?>">
+    <link rel="stylesheet" href="<?= $this->assetUrl('css/toastr.css') ?>">
     <!-- fontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- reCaptchat -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 	<!-- ////////////////////////////// -->
@@ -22,7 +25,7 @@
 	<header class="container-fluid">
         <div class="row">
             <div id="logo" class="col-lg-10 col-md-8 col-sm-12 col-xs-12">
-                <a href="<?= $this->url('default_home'); ?>"><img src="img/logoingames.png" id="imglogo" alt="LogoIngames"></a>
+                <a href="<?= $this->url('default_home'); ?>"><img src=" <?= $this->assetUrl('img/logoingames.png'); ?>" id="imglogo" alt="LogoIngames"></a>
             </div>
             <div id="login" class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
             <?php if(!isset($_SESSION['user'])){ ?>
@@ -41,7 +44,11 @@
 			?>
 				<h2>Bienvenue <?php echo $_SESSION['user']['user_name'] ;?></h2>
 				<a href="<?php echo $this->url('admin_deconnection'); ?>">Deconnexion</a>
+                <?php if($_SESSION['user']['user_type'] === 'admin'){?>
+                <p>Accès a la <a href="<?= $this->url('admin_adminhome'); ?>">zone admin</a></p>
+
 			<?php
+                }
 			}
 			?>
             </div>
@@ -96,16 +103,16 @@
         <div id="lien" class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
             <ul class="col-md-4 col-md-offset-4">
                <li class="col-md-6">
-                   <a href="#">- Qui sommes nous?</a>
+                   <a href="<?= $this->url('default_quisommesnous')?>">- Qui sommes nous?</a>
                </li>
                <li class="col-md-6">
-                   <a href="#">- Information légales</a>
+                   <a href="<?= $this->url('default_infolegales')?>">- Information légales</a>
                </li>
                <li class="col-md-6">
-                   <a href="#">- Foire Aux Questions</a>
+                   <a href="<?= $this->url('default_faq')?>">- Foire Aux Questions</a>
                </li>
                <li class="col-md-6">
-                   <a href="#">- Nous contacter</a>
+                   <a href="<?= $this->url('default_contact')?>">- Nous contacter</a>
                </li>
             </ul>
         </div>

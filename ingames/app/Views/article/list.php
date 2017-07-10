@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Liste des articles']) ?>
+<?php $this->layout('layout_admin', ['title' => 'Liste des articles']) ?>
 
 <?php $this->start('main_content') ?>
 	<h2>Liste des articles.</h2>

@@ -20,17 +20,64 @@ class AdminController extends Controller{
 		$this->authentification = new AuthentificationModel;
 		$this->user = new UsersModel;
 	}
+
+	////////////////FONCTION SPECIALE CAPTCHA//////////////////
+    public function isRecaptchaValid($code, $ip = null)
+    {
+        if(empty($code)) {
+            return false;
+        }
+        $params = [
+            'secret'    => '6LfkRigUAAAAAIrkWTp1qBEgCLinBPYzBLAiZw8Q',
+            'response'  => $code
+        ];
+        if($ip){
+            $params['remoteip'] = $ip;
+        }
+        $url = "https://www.google.com/recaptcha/api/siteverify?" . http_build_query($params);
+        if(function_exists('curl_version')){
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_HEADER, false);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            $response = curl_exec($curl);
+        }else{
+            $response = file_get_contents($url);
+        }
+        if(empty($response) || is_null($response)){
+            return false;
+        }
+        $json = json_decode($response);
+        if($json->success){
+        	return true;
+        }
+    }
+///////////////////////////////////////////////////////////////////////
+
+	public function home(){
+		$this->allowTo('admin');
+		$this->show('/admin/admin_home');
+	}
+
 	public function inscription(){
 		if($_SERVER['REQUEST_METHOD'] == 'GET'){
 			$this->show('user/inscription');
 		} else {
-			if($newUser = $this->user->createUser($_POST)){
-				$_SESSION['success'] = 'Votre inscription est réussie, vous pouvez vous connecter';
-				$this->redirectToRoute('admin_inscription');
-
-			} else {
-				$this->redirectToRoute('admin_inscription');
-			}
+			if(isset($_POST['g-recaptcha-response'])){
+		        if($this->isRecaptchaValid($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR'])){
+		        	unset($_POST['g-recaptcha-response']);
+		            if($newUser = $this->user->createUser($_POST)){
+						$_SESSION['success'] = 'Votre inscription est réussie, vous pouvez vous connecter';
+						$this->redirectToRoute('admin_inscription');
+					} else {
+					$this->redirectToRoute('admin_inscription');
+					}
+		        } else {
+		            $_SESSION['error'] = "erreur le captcha n\'est pas valide";
+		            $this->show('user/inscription');
+		        }
+		    }	
 		}
 	}
 

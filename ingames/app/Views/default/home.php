@@ -20,9 +20,9 @@
     	<?php foreach ($articles as $key => $article) { ?>
     	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="boite1">
     		<div class="box">
-    			<a href="article.php"><img src="img/ps.jpg" id="imgboite1"></a>
-    			<a href="article.php"><h2>News 1</h2></a>
-    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum praesentium ab repellat, quidem libero, perspiciatis. Numquam dolor nihil tempore dolore quos, eligendi labore perspiciatis aut quaerat, quae maxime debitis ullam!</p>
+    			<a href="article.php"><img src="img/ps.jpg"></a>
+    			<a href="article.php"><h2><?= $article['title']?></h2></a>
+    			<p>><?= $article['article_resume']?></p>
     			<a href="article">
     				<span class="fa fa-plus-circle"> lien vers l'article -></span>
     			</a>
@@ -50,11 +50,12 @@
             <li><a href="#" id="flecheg">
                     <span class="fa fa-arrow-left"></span>
                 </a>
-            <li><a href="page1">1</a></li>
-            <li><a href="page2">2</a></li>
-            <li><a href="page3">3</a></li>
-            <li><a href="page4">4</a></li>
-            <li><a href="page5">5</a></li>
+                <?php for ($i=1; $i < $nbPages; $i++) { ?>
+                    <li><a href="?page=<?= $i ?>"><?= $i ?></a></li>
+                <?php } ?>
+           
+        
+
             <li><a href="#" id="fleched">
                     <span class="fa fa-arrow-right"></span>
                 </a>
