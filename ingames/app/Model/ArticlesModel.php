@@ -137,14 +137,14 @@ class ArticlesModel extends \W\Model\Model{
             $_SESSION['error'] = 'Veuillez saisir un titre d\'au moins 4 caractères';
             return false;
         }
-        // if($updateDataArticle['system'] == 'null'){
-        //     $_SESSION['error'] = 'Erreur type d\'article incorrect';
-        //     return false;
-        // }
-        // if($updateDataArticle['system'] == 'null'){
-        //     $_SESSION['error'] = 'Erreur type de console incorrect';
-        //     return false;
-        // }
+         if($updateDataArticle['system'] == 'null'){
+             $_SESSION['error'] = 'Erreur type d\'article incorrect';
+             return false;
+         }
+         if($updateDataArticle['system'] == 'null'){
+             $_SESSION['error'] = 'Erreur type de console incorrect';
+             return false;
+         }
         if(empty($updateDataArticle['article_content'])){
             $_SESSION['error'] = 'Ce champ ne peut pas etre vide!';
             return false;
@@ -193,8 +193,10 @@ class ArticlesModel extends \W\Model\Model{
 
      }
 
-     public function searchByType($type, $limit = null, $offset = null){
-        $sql = 'SELECT * FROM article_type JOIN types ON types.id=article_type.id_types JOIN articles ON articles.id = article_type.id_article WHERE types.article_type LIKE :search';
+    //Si jamais on clique sur un lien du Nav de la page d'accueil on selectionne uniquement les articles dont le type correspond a l'intitulé du lien sur lequel on a cliqué
+     public function searchByType($type, $limit = null, $offset = null, $orderDir = 'ASC'){
+        $orderDir = strtoupper($orderDir);
+        $sql = 'SELECT * FROM article_type JOIN types ON types.id=article_type.id_types JOIN articles ON articles.id = article_type.id_article WHERE types.article_type LIKE :search ORDER BY article_date '.$orderDir;
         if($limit){
             $sql .= ' LIMIT '.$limit;
             if($offset){

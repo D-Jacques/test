@@ -2,17 +2,11 @@
 
 <?php $this->start('main_content') ?>
     <div id="filter">
-	    <a>trier par consoles :</a>
+	    <label for="consolefilter">trier par consoles :</label>
 	    <select id="consolefilter">
-	    <option value="playstation">Playstation</option>
-	    <option value="playstation2">Playstation2</option>
-	    <option value="playstation3">Playstation3</option>
-	    <option value="playstation4">Playstation4</option>
-	    <option value="xbox360">xbox360</option>
-	    <option value="xbox one">xbox one</option>
-	    <option value="Wii U">Wii U</option>
-	    <option value="nintendo Switch">Nintendo Switch</option>
-	    <option value="PC">PC</option>
+	    <?php foreach($systems as $system){?>
+	        <option value="<?= $system['id'] ?>"><?= $system['system_name'] ?></option>
+	    <?php }?>
 	    </select>
     </div>
 
@@ -20,12 +14,14 @@
     	<?php foreach ($articles as $key => $article) { ?>
     	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="boite1">
     		<div class="box">
-    			<a href="article.php"><img src="img/ps.jpg"></a>
-    			<a href="article.php"><h2><?= $article['title']?></h2></a>
-    			<p>><?= $article['article_resume']?></p>
-    			<a href="article">
-    				<span class="fa fa-plus-circle"> lien vers l'article -></span>
-    			</a>
+    			<a href="<?= $this->url('default_view',  ['id' =>$article['id']])?>" class="col-sm-4"><img class="articleImg" src="<?= $this->assetUrl($article['article_picture']) ?>"></a>
+    			<div class="col-sm-8">
+                    <a href="<?= $this->url('default_view',  ['id' =>$article['id']])?>"><h2><?= $article['title']?></h2></a>
+        			<p class="articleText"><?= $article['article_resume']?></p>
+        			<a href="<?= $this->url('default_view',  ['id' =>$article['id']])?>">
+        				<span class="fa fa-plus-circle"> lien vers l'article -></span>
+        			</a>
+                </div>
     		</div>
     	</div>
     	<?php       $next = $key + 1; //Vu que la clé commence a 0 on incrémente de un pour comparer avec le nombre total d'élémentd

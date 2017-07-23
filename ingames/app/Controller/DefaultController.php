@@ -5,11 +5,13 @@ namespace Controller;
 use \W\Controller\Controller;
 use Model\ArticlesModel;
 use Model\TypesModel;
+use Model\SystemModel;
 
 class DefaultController extends Controller
 {
 	public function __construct(){
 		$this->article = new ArticlesModel;
+        $this->System = new SystemModel;
 		$this->type = new TypesModel;
 	}
 	/**
@@ -25,7 +27,8 @@ class DefaultController extends Controller
 		$nbPages = $this->getNbPages(6);
 		$startOffset = 6 *($page - 1);
 		$articles = $this->article->findAll('article_date','DESC', 6, $startOffset);
-		$this->show('default/home', ['articles' => $articles, 'nbPages' => $nbPages]);
+        $System = $this->System->findAll();
+		$this->show('default/home', ['articles' => $articles, 'nbPages' => $nbPages, 'systems' => $System]);
 	}
 
 	public function getArticlesByTypes($article_type)
@@ -38,10 +41,17 @@ class DefaultController extends Controller
 		$type = $this->type->search(['article_type' => $article_type]);
 		$nbPages = $this->getNbPages(6, $type[0]['id']);
 		$startOffset = 6 *($page - 1);
-		$articles = $this->article->searchByType($article_type, 6, $startOffset);
-		$this->show('default/home', ['articles' => $articles, 'nbPages' => $nbPages]);
+		$articles = $this->article->searchByType($article_type, 6, $startOffset, 'DESC');
+        $System = $this->System->findAll();
+		$this->show('default/home', ['articles' => $articles, 'nbPages' => $nbPages, 'systems' => $System]);
 	}
 
+    public function view($id){
+        $articleData = $this->article->find($id);
+        $this->show('default/articleView', ['article' => $articleData]);
+        
+    }
+    
 	public function whoAreWe(){
 		$this->show('default/quisommesnous');
 	}

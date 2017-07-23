@@ -2,6 +2,7 @@
 	
 	$w_routes = array(
 		['GET', '/', 'Default#home', 'default_home'],
+        ['GET', '/articleView/[:id]', 'Default#view', 'default_view'],
 		['GET', '/quisommesnous', 'Default#whoAreWe', 'default_quisommesnous'],
 		['GET', '/informationlegales', 'Default#informations', 'default_infolegales'],
 		['GET', '/faq', 'Default#faq', 'default_faq'],

@@ -1,3 +1,5 @@
+/******* Haut de la page ********/
+
 body{
     background-color: white;
 }
@@ -34,6 +36,9 @@ div#login a{
 div#login a:hover{
     color: #C5071B;
 }
+
+/********Barre de navigation*******/
+
 div#navbar .container-fluid{
     padding: 0;
 }
@@ -76,6 +81,9 @@ div#navbar button{
     padding-right: 12px;
     height: 0px;
 }
+
+/***************/
+
 div#filter{
     text-align: center;
     margin-bottom: 50px;
@@ -86,34 +94,17 @@ div#filter a{
     font-family: Source Sans Pro;
 }
 .box{
+    height: 200px;
     border: 1px solid black;
     margin-bottom: 50px;
     padding: 15px;
 }
-#imgboite1{
-    width: 40%;
-    float: left;
+
+img.articleImg{
+    padding: 15% 0 0 0;
+    width: 90%;
 }
-#imgboite2{
-    width: 40%;
-    float: left;
-}
-#imgboite3{
-    width: 40%;
-    float: left;
-}
-#imgboite4{
-    width: 40%;
-    float: left;
-}
-#imgboite5{
-    width: 40%;
-    float: left;
-}
-#imgboite6{
-    width: 40%;
-    float: left;
-}
+
 div.boitescolonnehaute{
     display: block;
     width: 100%;
@@ -152,9 +143,8 @@ div#boitescolonnebasse h2{
 div#boitescolonnebasse h2:hover{
     color: #C5071B;
 }
-div.boitescolonnehaute p{
-    height: auto;
-    overflow: hidden;
+p.articleText{
+    word-wrap: break-word;
     font-size: 15px;
     font-family: Source Sans Pro;
 }
