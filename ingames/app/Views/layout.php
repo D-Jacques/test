@@ -118,13 +118,13 @@
         </div>
         <div id="social" class="col-lg-10 col-md-6 col-sm-12 col-xs-12">
             <ul>
-                <li><a href="#"><span class="fa fa-facebook-official fa-3x"></span><p hidden>Facebook</p hidden></a></li>
-                <li><a href="#"><span class="fa fa-twitter-square fa-3x"></span><p hidden>Twitter</p hidden></a></li>
-                <li><a href="#"><span class="fa fa-instagram fa-3x"></span><p hidden>Instagram</p hidden></a></li>
+                <li><a href="#"><span class="fa fa-facebook-official fa-3x"></span><p hidden>Facebook</p></a></li>
+                <li><a href="#"><span class="fa fa-twitter-square fa-3x"></span><p hidden>Twitter</p></a></li>
+                <li><a href="#"><span class="fa fa-instagram fa-3x"></span><p hidden>Instagram</p></a></li>
             </ul>
         </div>
         <div id="copyright" class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
-            <a href="#"><span class="fa fa-copyright fa-3x"></span><p hidden>copyright</p hidden></a>
+            <a href="#"><span class="fa fa-copyright fa-3x"></span><p hidden>copyright</p></a>
     </footer>
 
     <!-- ////////////////////////////// -->
@@ -165,6 +165,7 @@
 		unset($_SESSION['success']);
 		?>
 	</script>
+	<script src="<?= $this->assetUrl('js/script.js')?>"></script>
 	
 	<?= $this->section('script') ?>
 

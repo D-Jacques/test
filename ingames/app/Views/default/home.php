@@ -12,8 +12,8 @@
 
     <div class="row boitescolonnehaute">
     	<?php foreach ($articles as $key => $article) { ?>
-    	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="boite1">
-    		<div class="box">
+    	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" class="boite">
+    		<div class="box" data-bloc="<?= $key+1 ?>">
     			<a href="<?= $this->url('default_view',  ['id' =>$article['id']])?>" class="col-sm-4"><img class="articleImg" src="<?= $this->assetUrl($article['article_picture']) ?>"></a>
     			<div class="col-sm-8">
                     <a href="<?= $this->url('default_view',  ['id' =>$article['id']])?>"><h2><?= $article['title']?></h2></a>
@@ -41,7 +41,7 @@
     </div>
     
 </div>
-<div id="pagination" class="">
+<div id="pagination">
         <ul>
             <li><a href="#" id="flecheg">
                     <span class="fa fa-arrow-left"></span>
